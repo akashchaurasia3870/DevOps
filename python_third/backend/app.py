@@ -11,13 +11,9 @@ app = Flask(__name__)
 CORS(app)
 
 MONGODBURL = os.getenv('MONGODBURL')
-print(MONGODBURL)
 client = MongoClient(MONGODBURL)
 db = client['flaskdb']
 collection = db['users']
-
-print(collection,db)
-
 @app.route('/api',methods=["GET"])
 def get_data():
     with open('data.json','r') as file:
